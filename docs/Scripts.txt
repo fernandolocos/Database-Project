@@ -64,3 +64,7 @@ CREATE TABLE COLABORADOR(
 	IS_PROF			TINYINT(1) NOT NULL
 )
 ENGINE = MyISAM;
+
+INSERT INTO PESQUISADOR VALUES('1','Ricardo da Silva Torres', 'Doutor', 
+'Rua Um 100 Barão Geraldo Campinas - SP, 12456-363', '(19)2522-2222', 'rtorres@ic.unicamp.br', 
+'http://buscatextual.cnpq.br/buscatextual/visualizacv.jsp?id=K4769295A9', '0', '1', '0');
