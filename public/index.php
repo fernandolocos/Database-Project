@@ -17,6 +17,9 @@ set_include_path(implode(PATH_SEPARATOR, array(
 /** Zend_Application */
 set_include_path('/opt/ZendFramework-1.11.11/library/');
 require_once 'Zend/Application.php';
+require_once "Zend/Loader/Autoloader.php";
+
+$loader = Zend_Loader_Autoloader::getInstance()->setFallbackAutoloader(true);
 
 // Create application, bootstrap, and run
 $application = new Zend_Application(
