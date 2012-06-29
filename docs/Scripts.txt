@@ -525,48 +525,65 @@ CREATE TABLE PESQUISADOR_X_CONTRIBUICAO(
 
 // Dados para inserção
 
-INSERT INTO PESQUISADOR VALUES('1','Ricardo da Silva Torres', 'Doutor', 
+INSERT INTO PESQUISADOR VALUES('11111111111','Ricardo da Silva Torres', 'Doutor', 
 'Rua Um 100 BarÃ£o Geraldo Campinas - SP, 12456-363', '(19)2522-2222', 'rtorres@ic.unicamp.br', 
 'http://buscatextual.cnpq.br/buscatextual/visualizacv.jsp?id=K4769295A9', '0', '1', '0');
-INSERT INTO PESQUISADOR VALUES('22222222222', 'Anderson de Rezende Rocha, Doutor', 'Rua 1, 123', '1935215854', 'arocha@ic.unicamp.br', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4702293H8', 0, 1, 0);
-INSERT INTO PROFESSOR VALUES('22222222222', '2010-01-01', null, null, null, null);
 INSERT INTO PROFESSOR  VALUES('11111111111', '2005-01-01', null, 'RECOD', '2005-01-01', null);
-INSERT INTO PESQUISADOR  VALUES('33333333333', 'Jurandy Gomes de Almeida Junior', 'Doutor', 'Rua 3, 123', '1581198368', 'jurandy@ic.unicamp.br', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4736755E0', 1, 0, 1);
+
+INSERT INTO PESQUISADOR VALUES('22222222222', 'Anderson de Rezende Rocha', 'Doutor', 'Rua 1, 123', '(19)35215854', 'arocha@ic.unicamp.br', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4702293H8', 0, 1, 0);
+INSERT INTO PROFESSOR VALUES('22222222222', '2010-01-01', null, null, null, null);
+
+INSERT INTO PESQUISADOR  VALUES('33333333333', 'Jurandy Gomes de Almeida Junior', 'Doutor', 'Rua 3, 123', '(15)81198368', 'jurandy@ic.unicamp.br', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4736755E0', 1, 0, 1);
+INSERT INTO ALUNO VALUES('33333333333', '333333');
 INSERT INTO MESTRANDO  VALUES('33333333333', '2005-01-01', '2007-01-01');
 INSERT INTO DOUTORANDO  VALUES('33333333333', '2007-02-01', '2011-02-01');
 INSERT INTO COLABORADOR  VALUES('33333333333', 1, 0);
 INSERT INTO POS_DOUTORANDO  VALUES('33333333333', '2011-02-01', null);
 INSERT INTO CONTRIBUICAO  VALUES(1, 2, 'DISSERTACAO');
 INSERT INTO DISSERTACAO VALUES('Recuperação de Imagens por Cor utilizando Análise de Distribuição Discreta de Características', 1, '33333333333');
+
 INSERT INTO PESQUISADOR  VALUES('44444444444', 'Siome Klein Goldenstein', 'Doutor', 'Avenida Alberto Einstein, 1251', '1935215847', 'siome@ic.unicamp.br', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4791970Z1', 0, 1, 0);
 INSERT INTO PROFESSOR  VALUES('44444444444', '2003-01-01', null, null, null, null);
+
 INSERT INTO PESQUISADOR  VALUES('55555555555', 'Jefersson Alex dos Santos', 'Mestre', 'Rua 3, 125', '1535149456', 'jefersson@ic.unicamp.br', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4719937Z8', 1, 0, 1);
+INSERT INTO ALUNO VALUES('55555555555', '555555');
 INSERT INTO MESTRANDO  VALUES('55555555555', '2007-01-01', '2009-01-01');
 INSERT INTO DOUTORANDO VALUES('55555555555', '2009-01-01', null);
 INSERT INTO INTERCAMBIO_DOUTORADO VALUES('55555555555', '2010-01-01', null);
+
 INSERT INTO PESQUISADOR  VALUES('66666666666', 'Hélio Pedrini', 'Doutor', 'Rua 5, 555', '1935215919', 'helio@ic.unicamp.br', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4795613T2', 0, 0, 1);
 INSERT INTO COLABORADOR  VALUES('66666666666', 0, 1);
 INSERT INTO PROFESSOR_COLABORADOR VALUES('66666666666', '2009-02-01', null);
+
 INSERT INTO PESQUISADOR  VALUES('77777777777', 'Patricia Morellato', 'Doutor', 'Rua 5, 555', '1935215919','patricia@ic.unicamp.br', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K0000000T0', 0, 0, 1);
 INSERT INTO COLABORADOR  VALUES('77777777777', 0, 0);
+
 INSERT INTO PROJETO VALUES(1, 1, null, 'e-phenology', 'e-phenology: The application of new technologies to monitor plant phenology and track climate changes in the tropics', '2006-01-01', null);
 INSERT INTO PROJETO VALUES(4, 1, 1, 'e-phenology 2', 'e-phenology 2: subprojeto', '2007-01-01', null);
 INSERT INTO PROJETO VALUES(2, 2, null, 'dummyProj1', 'um projeto realizado entre 2009 e 2010', '2009-04-01', '2010-04-01');
 INSERT INTO PROJETO VALUES(3, 3, null, 'dummyProj2', 'um projeto realizado entre 2008 e 2010', '2008-04-01', '2010-04-01');
 INSERT INTO PROJETO VALUES(5, 5, null, 'dummyProj3', 'um projeto realizado entre 2008 e 2012', '2008-04-01', '2012-04-01');
+
 INSERT INTO EQUIPE VALUES(1);
+
 INSERT INTO FINANCIADORA VALUES(1, 'agência', 'Fundação de Amparo à Pesquisa do Estado de São Paulo', 'FAPESP', 'Rua da FAPESP, 123');
-INSERT INTO FINANCIADORA VALUES(1, 'empresa', 'Microsoft', 'Microsoft', 'Rua da Microsoft, 123');
-INSERT INTO CONTRIBUICAO VALUES(1, 1, 'ARTIGO');
-INSERT INTO ARTIGO VALUES(1, 'Artigo e-phenology', 'A1');  
-INSERT INTO CONTRIBUICAO VALUES(2, 5, 'ARTIGO');
-INSERT INTO ARTIGO VALUES(2, 'Vision of the Unseen: Current Trends and Challenges in Digital Image and Video Forensics', 'A1');
+INSERT INTO FINANCIADORA VALUES(2, 'empresa', 'Microsoft', 'Microsoft', 'Rua da Microsoft, 123');
+
+INSERT INTO CONTRIBUICAO VALUES(2, 1, 'ARTIGO');
+INSERT INTO ARTIGO VALUES(2, 'Artigo e-phenology', 'A1');  
+
+INSERT INTO CONTRIBUICAO VALUES(3, 5, 'ARTIGO');
+INSERT INTO ARTIGO VALUES(3, 'Vision of the Unseen: Current Trends and Challenges in Digital Image and Video Forensics', 'A1');
+
 INSERT INTO BANCA VALUES(1);
 INSERT INTO PROFESSOR_X_BANCA VALUES('11111111111' ,1);
 INSERT INTO COLABORADOR_X_BANCA VALUES('66666666666' ,1);
-INSERT INTO CONTRIBUICAO VALUES(3, 5, 'PATENTE');
-INSERT INTO PATENTE VALUES(3, 'A System and Apparatus for Failure Prediction and Fusion in Classification and Recognition', '2010-05-12', '106854A1');
-INSERT INTO CONTRIBUICAO VALUES(4, 2, 'APRESENTACAO');
-INSERT INTO APRESENTACAO VALUES(4, 'Reasoning for Complex Data', 'RECOD.pdf');
+
+INSERT INTO CONTRIBUICAO VALUES(4, 5, 'PATENTE');
+INSERT INTO PATENTE VALUES(4, 'A System and Apparatus for Failure Prediction and Fusion in Classification and Recognition', '2010-05-12', '106854A1');
+
+INSERT INTO CONTRIBUICAO VALUES(5, 2, 'APRESENTACAO');
+INSERT INTO APRESENTACAO VALUES(5, 'Reasoning for Complex Data', 'RECOD.pdf');
+
 INSERT INTO OUTRO_EVENTO VALUES(1, 'Palestras no IC', 'Série de palestras no IC', '2011-06-05', 'IC3, Unicamp');
-INSERT INTO OUTRO_EVENTO_X_APRESENTACAO VALUES(1, 4, 'Palestra', '2011-06-05', 'IC3, Unicamp');
+INSERT INTO OUTRO_EVENTO_X_APRESENTACAO VALUES(1, 5, 'Palestra', '2011-06-05', 'IC3, Unicamp');
