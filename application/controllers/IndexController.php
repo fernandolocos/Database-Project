@@ -5,7 +5,7 @@ class IndexController extends Zend_Controller_Action
 
     public function init()
     {
-    	
+    	$this->consultas = new Application_Model_Consultas();
     }
 
     public function indexAction()
@@ -13,10 +13,14 @@ class IndexController extends Zend_Controller_Action
 	
     }
 
-    public function consultarPesquisadoresAction()
+    public function consultarMembrosLabAction()
     {
-    	$this->consultarPesquisadores = new Application_Model_ConsultarPesquisadores();
-    	$this->view->tabela = $this->consultarPesquisadores->getPesquisadores();
+    	$this->view->tabela = $this->consultas->getMembrosLab();
+    }
+    
+    public function consultarProfColaboradoresLabAction()
+    {
+    	$this->view->tabela = $this->consultas->getProfColaboradoresLab();
     }
 }
 

@@ -8,12 +8,29 @@ class Application_Model_DbTable_Pesquisador extends Zend_Db_Table {
 		$db = Zend_Registry::get('db');
 	
 		$sql = "
-			SELECT NOME
+			SELECT *
 			FROM PESQUISADOR
-			ORDER BY NOME
 		";
 		
 		$result = $db->FetchAll($sql);
+		//var_dump($result);
+		if($result){
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	
+	public function getNomePesquisador($cpf){
+		$db = Zend_Registry::get('db');
+	
+		$sql = "
+			SELECT NOME
+			FROM PESQUISADOR
+			WHERE CPF = '{$cpf}'
+		";
+	
+		$result = $db->FetchOne($sql);
 		//var_dump($result);
 		if($result){
 			return $result;

@@ -1,20 +1,19 @@
 <?php
 
-class Application_Model_DbTable_Professor_Colaborador extends Zend_Db_Table {
+class Application_Model_DbTable_ProfessorColaborador extends Zend_Db_Table {
 
 	protected $_name = 'PROFESSOR_COLABORADOR';
 	
-	public function getTodosPesquisadores(){
+	public function getTodosProfColaboradores(){
 		$db = Zend_Registry::get('db');
 	
 		$sql = "
-			SELECT NOME
+			SELECT *
 			FROM PROFESSOR_COLABORADOR
-			ORDER BY NOME
 		";
 		
 		$result = $db->FetchAll($sql);
-		//var_dump($result);
+		//	var_dump($result);
 		if($result){
 			return $result;
 		}else{
