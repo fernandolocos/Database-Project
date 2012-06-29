@@ -1,4 +1,30 @@
-4) Quais os membros do laboratÃ³rio que nÃ£o compÃµem a equipe do projeto e-phenology
+1) Qual o nome dos membros do laboratório?
+
+SELECT P.NOME
+FROM PESQUISADOR P
+JOIN ALUNO A ON (A.CPF = P.CPF)
+	UNION
+    SELECT P.NOME
+    FROM PESQUISADOR P
+    JOIN PROFESSOR PROF ON (PROF.CPF = P.CPF)
+ORDER BY NOME
+            
+2) Quais os nomes dos professores colaboradores do laboratório?
+
+SELECT P.NOME
+FROM PESQUISADOR P
+JOIN PROFESSOR_COLABORADOR C ON (C.CPF = P.CPF)
+ORDER BY NOME
+
+3) Quais os projetos em execução no laboratório?
+
+SELECT P.TITULO, P.DESCRICAO
+FROM PROJETO P
+WHERE DATA_FIM IS NULL
+ORDER BY DATA_INICIO
+
+4) Quais os membros do laboratório que não compõe a equipe do projeto "e-phenology"?
+
 SELECT NOME
 FROM PESQUISADOR
 WHERE NOME NOT
@@ -12,7 +38,9 @@ WHERE (
 	)
 )
 
-5) Qual o coordenador dos projetos conduzidos no laboratÃ³rio entre o perÃ­odo de Abril de 2009 a Julho de 2012?
+5) Qual o coordenador dos projetos conduzidos no laboratório entre o período 
+de abril de 2009 a julho de 2012?
+
 SELECT P.NOME, PROJ.TITULO
 SELECT P.NOME, PROJ.TITULO
 FROM PESQUISADOR P, PROJETO PROJ, PROFESSOR_X_PROJETO PP
@@ -33,8 +61,8 @@ WHERE (
 )
 ORDER BY TITULO
 
+6) Qual instituição financia o projeto "e-phenology"?
 
-6) Qual instituiÃ§Ã£o financia o projeto 'e-phenology'
 SELECT F.SIGLA, F.NOME, FP.DESCRICAO FROM FINANCIADORA F, FINANCIADORA_X_PROJETO FP, PROJETO P
 WHERE (
 	P.TITULO = 'e-phenology'
@@ -42,8 +70,8 @@ WHERE (
 	AND F.CODIGO = FP.COD_FINANCIADORA
 )
 
+7) Quem orientou o mestrado de Jurandy Almeida?
 
-7) Quem orientou o mestrado de Jurandy Almeida
 SELECT ORI.NOME FROM PESQUISADOR ORI, DISSERTACAO D, PESQUISADOR MES, PROFESSOR_X_DISSERTACAO PS
 WHERE (
 	MES.NOME = 'Jurandy Gomes de Almeida Junior'
@@ -54,6 +82,7 @@ WHERE (
 ORDER BY NOME
 
 8) Quais alunos orientados pelo Prof. Anderson Rocha defenderam em 2012?
+
 SELECT P.NOME FROM PESQUISADOR P, PESQUISADOR ORI, PROFESSOR_X_DISSERTACAO PD, DISSERTACAO DIS, DEFESA_DISSERTACAO DEF
 WHERE (
 	ORI.NOME = 'Anderson de Rezende Rocha'
@@ -77,8 +106,8 @@ WHERE (
 )
 ORDER BY NOME
 
-
 9) Quais os nomes dos subprojetos do projeto "e-phenology"?
+
 SELECT SUB.TITULO FROM PROJETO SUB, PROJETO P
 WHERE (
 	P.TITULO = 'e-phenology'
@@ -89,5 +118,79 @@ ORDER BY TITULO
 10) Quais as contribuições associadas ao projeto "e-phenology"?
 
 
+11) Quais os artigos com classificação Qualis A1 foram publicados em 2012 em periódicos internacionais.
 
+SELECT A.TITULO FROM ARTIGO A
+WHERE (A.QUALIS = 'A1')
+ORDER BY TITULO
 
+12) Quais os artigos publicados pelo Prof. Anderson Rocha em 2011?
+
+SELECT A.TITULO
+FROM ARTIGO A, PERIODICO_X_ARTIGO PA, CONTRIBUICAO C, PESQUISADOR P, PESQUISADOR_X_CONTRIBUICAO PC
+WHERE (
+	P.NOME = 'Anderson de Rezende Rocha'
+	AND P.CPF = PC.CPF
+	AND A.COD_CONTRIBUICAO = C.CODIGO
+	AND PC.CODIGO = C.CODIGO
+	AND PA.COD_CONTRIBUICAO = C.CODIGO
+	AND PA.ANO >= '2011-01-01' 
+	AND PA.ANO <= '2011-12-31'
+)
+
+13) Quais alunos estavam em estágio sanduíche em 2010?
+
+SELECT P.NOME 
+FROM PESQUISADOR P
+LEFT JOIN INTERCAMBIO_MESTRADO IM ON (IM.CPF = P.CPF)
+LEFT JOIN INTERCAMBIO_DOUTORADO ID ON (ID.CPF = P.CPF)
+WHERE 	((DATE(ID.DATA_INICIAL) >= '2010-01-01' AND
+	DATE(ID.DATA_INICIAL) <= '2010-12-31') OR
+	(DATE(ID.DATA_FINAL) >= '2010-01-01' AND
+	DATE(ID.DATA_FINAL) <= '2010-12-31')) OR
+	((DATE(IM.DATA_INICIAL) >= '2010-01-01' AND DATE(IM.DATA_INICIAL) <= '2010-12-31') OR
+	(DATE(IM.DATA_FINAL) >= '2010-01-01' AND DATE(IM.DATA_FINAL) <= '2010-12-31'))
+ORDER BY P.NOME
+
+14) Quem era o supervisor e	qual agência financiou o estágio sanduíche 
+do aluno Jefersson Alex dos Santos?
+
+15) Quantas vezes o Prof. Helio Pedrini participou de bancas de doutorado 
+de alunos do laboratório?
+
+SELECT COUNT(CB.COD_BANCA)
+FROM COLABORADOR_X_BANCA CB, EQ_DOUTORADO D
+WHERE CB.COD_BANCA = D.COD_BANCA
+
+16) Qual o título das patentes registradas pelo Prof. Anderson Rocha?
+
+SELECT PAT.TITULO 
+FROM PATENTE PAT, PESQUISADOR P, PESQUISADOR_X_CONTRIBUICAO PC
+WHERE (
+P.NOME = 'Anderson de Rezende Rocha'
+AND P.CPF = PC.CPF
+AND PC.CODIGO = PAT.COD_CONTRIBUICAO
+)
+ORDER BY TITULO
+
+17) Quando a palestra "Reasoning for Complex Data" foi apresentada?
+
+SELECT O.DATA
+FROM OUTRO_EVENTO_X_APRESENTACAO O, APRESENTACAO A
+WHERE O.COD_CONTRIBUICAO = A.COD_CONTRIBUICAO
+
+18) Quais as publicações associadas a alunos de doutorado do laboratório?
+
+SELECT P.NOME, C.TIPO
+FROM CONTRIBUICAO C, PESQUISADOR_X_CONTRIBUICAO PC, DOUTORANDO D, PESQUISADOR P
+WHERE 	C.CODIGO = PC.CODIGO AND
+		PC.CPF = D.CPF AND
+		PC.CPF = P.CPF
+ORDER BY NOME
+
+19) Qual projeto gerou mais publicações em conferências?
+Liste todos os artigos publicados.
+
+20) Selecione o nome dos professores que trabalham em todos os projetos 
+do laboratório financiados pela	FAPESP e que não trabalham em nenhum 
+projeto coordenado pelo Prof. Ricardo Torres.
